@@ -12,6 +12,7 @@
   - IP address: 10.1.3.2 
 - 1 app node
   - IP address: 10.1.3.3
+- Openshift 3.9
 
 ## How to Run the Installation
 
