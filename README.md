@@ -44,8 +44,7 @@ ansible-playbook -i hosts openshift.yaml
 
 ```
 git clone https://github.com/openshift/openshift-ansible
-cd openshift-ansible
-git checkout release-3.9
+( cd openshift-ansible &&  git checkout release-3.9)
 ```
 5. Run the prerequisites playbook
 
