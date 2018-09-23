@@ -23,6 +23,14 @@ Install the following in your local machine:
 
 *Note: All commands are run in the local machine.*
 
+0. If you don't have an ssh key pair, execute the following:
+
+```
+ssh-keygen
+```
+
+Accept the defaults and don't enter a password.
+
 1. Clone this repository
   
 ```
@@ -40,6 +48,13 @@ The username/password for the virtual machines is:
 
   - username: vagrant
   - password: vagrant
+
+Make sure that you can ssh to the machines without a password. Execute the following commands:
+
+```
+ssh vagrant@10.1.3.2
+ssh vagrant@10.1.3.3
+```
 
 3. Run the ansible script to prepare the hosts.
 
