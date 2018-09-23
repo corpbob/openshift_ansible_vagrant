@@ -63,3 +63,7 @@ ansible-playbook -i hosts openshift-ansible/playbooks/deploy_cluster.yml
 
 https://master.10.1.3.2.nip.io:8443
 
+Login credentials:
+- username: admin
+- password: admin
+
