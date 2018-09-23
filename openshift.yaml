@@ -1,12 +1,5 @@
 ---
 - hosts: nodes
-  vars:
-    user_dir: '/home/{{ ansible_user }}'
-    jboss_home: '{{ user_dir }}/jboss-eap-7.1'
-    domains_dir: '{{ user_dir }}/mydomains'
-    jboss_binary: jboss-eap-7.1.0.zip
-    master_ip_address: '{{ hostvars["master"]["public_ip"] }}'
-    server_groups: prod-group
   tasks:
     - name: Set the /etc/hosts file
       copy:
@@ -32,6 +25,7 @@
           - kexec-tools
           - sos
           - psacct
+          - python-passlib
 
     - name: upgrade all packages
       yum:
