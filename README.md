@@ -1,9 +1,14 @@
 # Install an OpenShift cluster using Vagrant and ansible
 
 ## Prerequisites
-- Install Vagrant to your local machine
-- Install Ansible to your local machine
-- Install Git to your local machine
+
+Install the following in your local machine:
+
+   - VirtualBox
+   - Vagrant
+   - Ansible
+   - Git
+
 - Your computer has internet access
 
 ## The Setup
