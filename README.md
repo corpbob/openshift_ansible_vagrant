@@ -29,8 +29,8 @@ vagrant provision
 ```
 The username/password for the virtual machines is:
 
-username: vagrant
-password: vagrant
+- username: vagrant
+- password: vagrant
 
 - Run the ansible script to prepare the hosts.
 
@@ -46,6 +46,12 @@ ansible-playbook -i hosts openshift.yaml
 ansible-playbook -i hosts openshift-ansible/playbooks/prerequisites.yml
 ```
 
+- Clone the openshift-ansible project
+
+```
+git clone https://github.com/openshift/openshift-ansible
+```
+
 - Run the deploy_cluster playbook
 
 ```
@@ -54,5 +60,5 @@ ansible-playbook -i hosts openshift-ansible/playbooks/deploy_cluster.yml
 
 - After the installation, if all goes well, navigate to the Openshift console:
 
-http://master.10.1.3.2:8443
+https://master.10.1.3.2.nip.io:8443
 
