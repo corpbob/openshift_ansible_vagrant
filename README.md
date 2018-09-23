@@ -40,18 +40,17 @@ cd ..
 ansible-playbook -i hosts openshift.yaml
 ```
 
-- Run the prerequisites playbook
-
-```
-ansible-playbook -i hosts openshift-ansible/playbooks/prerequisites.yml
-```
-
 - Clone the openshift-ansible project
 
 ```
 git clone https://github.com/openshift/openshift-ansible
 cd openshift-ansible
 git checkout release-3.9
+```
+- Run the prerequisites playbook
+
+```
+ansible-playbook -i hosts openshift-ansible/playbooks/prerequisites.yml
 ```
 
 - Run the deploy_cluster playbook
