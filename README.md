@@ -90,3 +90,10 @@ Login credentials:
 - username: admin
 - password: admin
 
+8. Give admin the role cluster-admin:
+
+```
+oc adm policy add-cluster-role-to-user cluster-admin admin
+```
+
+
