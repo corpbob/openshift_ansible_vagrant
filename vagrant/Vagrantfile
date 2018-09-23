@@ -1,0 +1,25 @@
+
+Vagrant.configure(2) do |config|
+
+  config.vm.define "master" do |master|
+    master.vm.box = "centos/7"
+    master.vm.network "private_network", ip: "10.1.3.2"
+    master.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.memory = "4096"
+    end
+    master.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "id_rsa.pub"
+    master.vm.provision "shell", inline: "cat id_rsa.pub >> .ssh/authorized_keys"
+  end
+
+  config.vm.define "node1" do |node1|
+    node1.vm.box = "centos/7"
+    node1.vm.network "private_network", ip: "10.1.3.3"
+    node1.vm.provider "virtualbox" do |vb|
+      vb.gui = true
+      vb.memory = "4096"
+    end
+    node1.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "id_rsa.pub"
+    node1.vm.provision "shell", inline: "cat id_rsa.pub >> .ssh/authorized_keys"
+  end
+end
