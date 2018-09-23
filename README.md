@@ -29,8 +29,8 @@ vagrant provision
 ```
 The username/password for the virtual machines is:
 
-- username: vagrant
-- password: vagrant
+  - username: vagrant
+  - password: vagrant
 
 - Run the ansible script to prepare the hosts.
 
