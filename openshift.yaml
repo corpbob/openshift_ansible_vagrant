@@ -1,10 +1,10 @@
 ---
 - hosts: nodes
   tasks:
-    - name: Set the /etc/hosts file
-      copy:
-        src: etc_hosts_file
-        dest: /etc/hosts
+#    - name: Set the /etc/hosts file
+#      copy:
+#        src: etc_hosts_file
+#        dest: /etc/hosts
 
     - name: Set the hostname
       command: "hostnamectl set-hostname {{ inventory_hostname }}"
