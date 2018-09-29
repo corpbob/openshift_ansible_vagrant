@@ -23,7 +23,7 @@ Install the following in your local machine:
 
 ## How to Run the Installation
 
-*Note: All commands are run in the local machine.*
+*Note: All commands are run in the bastion host.*
 
 1. Clone this repository
   
