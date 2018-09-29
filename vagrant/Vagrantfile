@@ -3,13 +3,11 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "bastion" do |bastion|
     $script= <<-SCRIPT
-    #yum install -y git python-passlib httpd-tools java-1.8.0-openjdk-devel squid telnet
     yum install -y git python-passlib httpd-tools java-1.8.0-openjdk-devel telnet
     yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
     sed -i -e "s/^enabled=1/enabled=0/" /etc/yum.repos.d/epel.repo
     yum -y --enablerepo=epel install ansible pyOpenSSL
     
-    #sudo mv /home/vagrant/etc_hosts_file /etc/hosts
     cat id_rsa.pub >> .ssh/authorized_keys
     chown vagrant.vagrant /home/vagrant/.ssh/*
     chmod 600 /home/vagrant/.ssh/*
@@ -33,7 +31,6 @@ Vagrant.configure(2) do |config|
     bastion.vm.provision "file", source: "id_rsa", destination: ".ssh/id_rsa"
     bastion.vm.provision "file", source: "../openshift.yaml", destination: "openshift.yaml"
     bastion.vm.provision "file", source: "../hosts", destination: "hosts"
-    #bastion.vm.provision "file", source: "../etc_hosts_file", destination: "etc_hosts_file"
     bastion.vm.provision "file", source: "ssh_config", destination: ".ssh/config"
 
     bastion.vm.provision "shell", inline: $script
@@ -43,9 +40,6 @@ Vagrant.configure(2) do |config|
   config.vm.define "master" do |master|
     $script = <<-SCRIPT
       cat id_rsa*.pub >> .ssh/authorized_keys
-      #sudo mv /home/vagrant/etc_hosts_file /etc/hosts
-      #sudo mv resolv.conf /etc/resolv.conf
-      #sudo mv environment /etc/environment
     SCRIPT
 
     master.vm.box = "centos/7"
@@ -56,18 +50,12 @@ Vagrant.configure(2) do |config|
     end
     master.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "id_rsa1.pub"
     master.vm.provision "file", source: "id_rsa.pub", destination: "id_rsa2.pub"
-    #master.vm.provision "file", source: "../etc_hosts_file", destination: "etc_hosts_file"
-    #master.vm.provision "file", source: "../resolv.conf", destination: "resolv.conf"
-    #master.vm.provision "file", source: "environment", destination: "environment"
     master.vm.provision "shell", inline: $script
   end
 
   config.vm.define "node1" do |node1|
     $script = <<-SCRIPT
       cat id_rsa*.pub >> .ssh/authorized_keys
-      #sudo mv /home/vagrant/etc_hosts_file /etc/hosts
-      #sudo mv resolv.conf /etc/resolv.conf
-      #sudo mv environment /etc/environment
 
     SCRIPT
 
@@ -80,9 +68,6 @@ Vagrant.configure(2) do |config|
     end
     node1.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "id_rsa1.pub"
     node1.vm.provision "file", source: "id_rsa.pub", destination: "id_rsa2.pub"
-    #node1.vm.provision "file", source: "../etc_hosts_file", destination: "etc_hosts_file"
-    #node1.vm.provision "file", source: "../resolv.conf", destination: "resolv.conf"
-    #node1.vm.provision "file", source: "environment", destination: "environment"
     node1.vm.provision "shell", inline: $script
   end
 end
