@@ -30,6 +30,7 @@ Vagrant.configure(2) do |config|
     bastion.vm.provision "file", source: "id_rsa.pub", destination: ".ssh/id_rsa.pub"
     bastion.vm.provision "file", source: "id_rsa", destination: ".ssh/id_rsa"
     bastion.vm.provision "file", source: "../openshift.yaml", destination: "openshift.yaml"
+    bastion.vm.provision "file", source: "../fix.yml", destination: "fix.yml"
     bastion.vm.provision "file", source: "../hosts", destination: "hosts"
     bastion.vm.provision "file", source: "ssh_config", destination: ".ssh/config"
 
