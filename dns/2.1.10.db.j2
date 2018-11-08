@@ -1,0 +1,17 @@
+$TTL 86400
+@   IN  SOA     primary.example.com. root.example.com. (
+2014112511  ;Serial
+3600        ;Refresh
+1800        ;Retry
+604800      ;Expire
+86400       ;Minimum TTL
+)
+;Name Server Information
+@ IN  NS      primary.example.com.
+;Reverse lookup for Name Server
+200        IN  PTR     primary.example.com.
+;PTR Record IP address to HostName
+201      IN  PTR     mail.example.com.
+1        IN  PTR     repo.example.com.
+2        IN  PTR     master.example.com.
+3        IN  PTR     node1.example.com.
